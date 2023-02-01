@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "flask-tutorial-repo"
+version = "0.1.0"
+description = ""
+authors = ["nour <nourmohamedelhwary@gmail.com>"]
+readme = "README.md"
+packages = [{include = "flask_tutorial_repo"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+flask = "2.2.2"
+connexion = {version = "2.14.1", extras = ["swagger-ui"]}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
