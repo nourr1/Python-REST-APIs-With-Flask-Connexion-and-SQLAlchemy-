@@ -1,24 +1,24 @@
+from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.orm import Session
+from database import Base, engine
+from config import ma
 from datetime import datetime
-from config import db, ma
 
 
-class Person(db.Model):
+class Person(Base):
     __tablename__ = "person"
-    id = db.Column(db.Integer, primary_key=True)
-    lname = db.Column(db.String(32), unique=True)
-    fname = db.Column(db.String(32))
-    timestamp = db.Column(
-        db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
+    id = Column(Integer, primary_key=True)
+    lname = Column(String(32), unique=True)
+    fname = Column(String(32))
+    timestamp = Column(
+        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
     )
-
 
 class PersonSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Person
         load_instance = True
-        sqla_session = db.session
+        sqla_session = Session(engine)
 
-
-Person = Person()
 person_schema = PersonSchema()
 people_schema = PersonSchema(many=True)
