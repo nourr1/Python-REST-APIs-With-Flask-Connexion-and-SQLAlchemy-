@@ -1,22 +1,18 @@
 from flask import render_template
-
-# Remove: import connexion
-
-import config
-
+from config import connex_app, basedir
+from database import SessionLocal
 from model import Person
 
 
-app = config.connex_app
+app = connex_app
 
-app.add_api(config.basedir / "swagger.yml")
+app.add_api(basedir / "swagger.yml")
 
 
 @app.route("/")
-
 def home():
-
-    people = Person.query.all()
+    session = SessionLocal()
+    people = session.query(Person).all()
 
     return render_template("home.html", people=people)
 
