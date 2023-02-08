@@ -12,22 +12,22 @@ components:
     Person:
       type: "object"
       required:
-        - lname
+        - last_name
       properties:
-        fname:
+        first_name:
           type: "string"
-        lname:
+        last_name:
           type: "string"
     Fname:
       type: "object"
       required:
-        - fname
+        - first_name
       properties:
-        fname:
+        first_name:
           type: "string"
   parameters:
-    lname:
-      name: "lname"
+    last_name:
+      name: "last_name"
       description: "Last name of the person to get"
       in: path
       required: True
@@ -50,24 +50,24 @@ paths:
         - People
       summary: "Create a person"
       requestBody:
-          description: "Person to create"
-          required: True
-          content:
-            application/json:
-              schema:
-                x-body-name: "person"
-                $ref: "#/components/schemas/Person"
+        description: "Person to create"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "person"
+              $ref: "#/components/schemas/Person"
       responses:
         "201":
           description: "Successfully created person"
-  /people/{lname}:
+  /people/{last_name}:
     get:
       operationId: "people.read_one"
       tags:
         - People
       summary: "Read one person"
       parameters:
-        - $ref: "#/components/parameters/lname"
+        - $ref: "#/components/parameters/last_name"
       responses:
         "200":
           description: "Successfully read person"
@@ -77,7 +77,7 @@ paths:
       operationId: "people.update"
       summary: "Update a person"
       parameters:
-        - $ref: "#/components/parameters/lname"
+        - $ref: "#/components/parameters/last_name"
       responses:
         "200":
           description: "Successfully updated person"
@@ -93,7 +93,7 @@ paths:
       operationId: "people.delete"
       summary: "Delete a person"
       parameters:
-        - $ref: "#/components/parameters/lname"
+        - $ref: "#/components/parameters/last_name"
       responses:
         "204":
           description: "Successfully deleted person"
