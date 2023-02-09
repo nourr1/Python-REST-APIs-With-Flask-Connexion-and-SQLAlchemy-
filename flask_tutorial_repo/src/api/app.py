@@ -1,12 +1,14 @@
 from flask import render_template
 from config import connex_app, base_directory
-from database import session
-from model import Person
+from persistence.database import session
+from persistence.model import Person
 
 
 app = connex_app
 
-app.add_api(base_directory / "swagger.yml")
+print(base_directory)
+
+app.add_api(base_directory / "spec/swagger.yml")
 
 
 @app.route("/")

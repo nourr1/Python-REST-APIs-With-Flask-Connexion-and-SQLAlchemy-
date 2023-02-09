@@ -1,6 +1,6 @@
 from flask import make_response, abort
-from database import Base, engine, session
-from model import Person, people_schema, person_schema
+from persistence.database import Base, engine, session
+from persistence.model import Person, people_schema, person_schema
 
 
 # Establishing tables using metadata objects with respect to enginge

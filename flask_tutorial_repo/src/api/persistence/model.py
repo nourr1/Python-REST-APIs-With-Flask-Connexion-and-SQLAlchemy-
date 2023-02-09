@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import Session
-from database import Base, engine
+from persistence.database import Base, engine
 from config import ma
 from datetime import datetime
 
