@@ -5,9 +5,6 @@ from persistence.model import Person
 
 
 app = connex_app
-
-print(base_directory)
-
 app.add_api(base_directory / "spec/swagger.yml")
 
 
